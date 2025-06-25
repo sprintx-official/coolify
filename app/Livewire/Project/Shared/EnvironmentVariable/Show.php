@@ -64,6 +64,9 @@ class Show extends Component
 
     public function mount()
     {
+        if (auth()->user()->isMember()) {
+            abort(403);
+        }
         $this->syncData();
         if ($this->env->getMorphClass() === \App\Models\SharedEnvironmentVariable::class) {
             $this->isSharedVariable = true;

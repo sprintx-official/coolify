@@ -17,6 +17,9 @@ class Create extends Component
     public function submit()
     {
         try {
+            if (auth()->user()->isMember()) {
+                return redirect()->route('team.index');
+            }
             $this->validate();
             $team = Team::create([
                 'name' => $this->name,

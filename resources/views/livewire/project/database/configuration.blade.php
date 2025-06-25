@@ -9,9 +9,11 @@
         <div class="flex flex-col items-start gap-2 min-w-fit">
             <a class='menu-item' wire:current.exact="menu-item-active"
                 href="{{ route('project.database.configuration', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'database_uuid' => $database->uuid]) }}">General</a>
-            <a class='menu-item' wire:current.exact="menu-item-active"
-                href="{{ route('project.database.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'database_uuid' => $database->uuid]) }}">Environment
-                Variables</a>
+            @if (!auth()->user()->isMember())
+                <a class='menu-item' wire:current.exact="menu-item-active"
+                    href="{{ route('project.database.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'database_uuid' => $database->uuid]) }}">Environment
+                    Variables</a>
+            @endif
             <a class='menu-item' wire:current.exact="menu-item-active"
                 href="{{ route('project.database.servers', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'database_uuid' => $database->uuid]) }}">Servers</a>
             <a class='menu-item' wire:current.exact="menu-item-active"
