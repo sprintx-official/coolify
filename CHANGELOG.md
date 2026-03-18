@@ -3307,6 +3307,7 @@ All notable changes to this project will be documented in this file.
 - *(degraded-status)* Remove unnecessary whitespace in badge element for cleaner HTML
 - *(routes)* Add name to security route for improved route management
 - Split security scanner into separate steps (size limit fix)
+- Fix security scanner bash -e crash
 
 ### 💼 Other
 
@@ -4153,6 +4154,7 @@ All notable changes to this project will be documented in this file.
 - Update changelog
 - Update changelog
 - *(service)* Add new docs link for zipline (#5912)
+- Update changelog
 - Update changelog
 - Update changelog
 - Update changelog
