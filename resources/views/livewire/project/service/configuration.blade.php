@@ -10,9 +10,11 @@
                 <x-external-link /></a>
             <a class='menu-item' wire:current.exact="menu-item-active"
                 href="{{ route('project.service.configuration', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'service_uuid' => $service->uuid]) }}">General</a>
-            <a class='menu-item' wire:current.exact="menu-item-active"
-                href="{{ route('project.service.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'service_uuid' => $service->uuid]) }}">Environment
-                Variables</a>
+            @if (!auth()->user()->isMember())
+                <a class='menu-item' wire:current.exact="menu-item-active"
+                    href="{{ route('project.service.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'service_uuid' => $service->uuid]) }}">Environment
+                    Variables</a>
+            @endif
             <a class='menu-item' wire:current.exact="menu-item-active"
                 href="{{ route('project.service.storages', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'service_uuid' => $service->uuid]) }}">Persistent
                 Storages</a>

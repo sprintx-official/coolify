@@ -17,9 +17,11 @@
                     href="{{ route('project.application.swarm', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'application_uuid' => $application->uuid]) }}">Swarm
                     Configuration</a>
             @endif
-            <a class='menu-item' wire:current.exact="menu-item-active"
-                href="{{ route('project.application.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'application_uuid' => $application->uuid]) }}">Environment
-                Variables</a>
+            @if (!auth()->user()->isMember())
+                <a class='menu-item' wire:current.exact="menu-item-active"
+                    href="{{ route('project.application.environment-variables', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'application_uuid' => $application->uuid]) }}">Environment
+                    Variables</a>
+            @endif
             <a class='menu-item' wire:current.exact="menu-item-active"
                 href="{{ route('project.application.persistent-storage', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid, 'application_uuid' => $application->uuid]) }}">Persistent
                 Storage</a>

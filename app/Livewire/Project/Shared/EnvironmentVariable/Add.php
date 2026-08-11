@@ -42,6 +42,9 @@ class Add extends Component
 
     public function mount()
     {
+        if (auth()->user()->isMember()) {
+            abort(403);
+        }
         $this->parameters = get_route_parameters();
     }
 

@@ -34,6 +34,9 @@ class Index extends Component
 
     public function mount()
     {
+        if (auth()->user()->isMember()) {
+            abort(403);
+        }
         $this->team = currentTeam();
     }
 

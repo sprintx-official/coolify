@@ -41,6 +41,9 @@ class Show extends Component
 
     public function mount()
     {
+        if (auth()->user()->isMember()) {
+            abort(403);
+        }
         $this->parameters = get_route_parameters();
         $this->project = Project::ownedByCurrentTeam()->where('uuid', request()->route('project_uuid'))->firstOrFail();
         $this->environment = $this->project->environments()->where('uuid', request()->route('environment_uuid'))->firstOrFail();

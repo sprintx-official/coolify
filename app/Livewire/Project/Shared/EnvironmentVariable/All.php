@@ -32,6 +32,9 @@ class All extends Component
 
     public function mount()
     {
+        if (auth()->user()->isMember()) {
+            abort(403);
+        }
         $this->is_env_sorting_enabled = data_get($this->resource, 'settings.is_env_sorting_enabled', false);
         $this->resourceClass = get_class($this->resource);
         $resourceWithPreviews = [\App\Models\Application::class];
